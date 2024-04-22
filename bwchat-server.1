@@ -1,0 +1,29 @@
+.TH bwchat\-server 1 "2024-04-22" "bwchat 0.0.0"
+
+.SH NAME
+bwchat\-server \- the bwchat's chat server
+
+.SH SYNOPSIS
+.B bwchat-server
+.RI [ options ]
+
+.SH DESCRIPTION
+Keeps the chat state, accessed by
+.BR bwchat\-cgi (1)
+processes.
+
+.SH OPTIONS
+.TP
+.BI \-l\ \fR,\ \fB\-\-log\-stderr
+Write logs into stderr, in addition to syslog
+.TP
+.BI \-s\  PATH \fR,\ \fB\-\-socket\-path= PATH
+The Unix domain socket path to listen on
+
+.SH SIGNALS
+.TP
+SIGTERM, SIGINT, SIGQUIT
+Exit gracefully.
+
+.SH SEE ALSO
+.BR bwchat\-cgi (1)

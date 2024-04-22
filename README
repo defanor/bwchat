@@ -1,0 +1,41 @@
+bwchat, a basic web chat
+
+
+A simple chat featuring textual messages, file upload, audio streams.
+
+The aim is to implement that functionality using the simplest
+necessary technologies and relatively little code, so that (hopefully)
+it works sufficiently well, is readily usable by casual computer
+users, with commonly installed web browsers, and is easy to deploy.
+
+Written in C, optionally uses libfcgi. Does not include features
+beyond the essentials required for communication, assumes cooperating
+participants.
+
+The textual chat, file upload, and audio stream consumption work
+without JavaScript, making the basic chat functionality available from
+simpler web browsers (e.g., lynx, w3m) and audio streams available via
+audio players, while audio stream upload depends on JavaScript. When
+JS is available, AJAX is used for message sending and retrieval. The
+supported audio streams are Ogg with the Opus codec.
+
+The chat consists of bwchat-server, a daemon that keeps the state and
+organizes clients, and bwchat-cgi, a (Fast)CGI program handling
+individual HTTP requests. Additional clients can be implemented with
+the bwchat.h header, including those for interfaces other than CGI.
+
+
+Building, setup, and running instructions: retrieve the sources
+(possibly by cloning the repository), ensure that nginx, spawn-fcgi,
+libfcgi (-dev), autotools, and a C compiler (e.g., gcc or clang) are
+installed, run autoreconf -i, create missing files, use the generated
+configure script, make. Run bwchat-server on its own, and bwchat-cgi
+with spawn-fcgi, with a suitable fastcgi nginx configuration. Place
+chat.js into a suitable directory served by nginx. Generally it is a
+good idea to run such services with reduced privileges, possibly
+chrooted or otherwise restricted. SCRIPT_NAME's basename should be
+"chat" to render the main page.
+
+Alternatively, use a different web server, different FastCGI runner
+(or plain CGI), build the programs manually, skip chat.js, tweak the
+runtime options (see --help or man pages).

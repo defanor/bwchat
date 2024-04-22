@@ -1,0 +1,30 @@
+.TH bwchat-cgi 1 "2024-04-22" "bwchat 0.0.0"
+
+.SH NAME
+bwchat\-cgi \- the bwchat's (Fast)CGI program
+
+.SH SYNOPSIS
+.B bwchat-cgi
+.RI [ options ]
+
+.SH DESCRIPTION
+Handles client requests, interacts with
+.BR bwchat\-server (1).
+
+.SH OPTIONS
+.TP
+.BI \-j\  URL \fR,\ \fB\-\-js\-url= URL
+JavaScript (bwchat.js) URL to reference from HTML
+.TP
+.BI \-l\ \fR,\ \fB\-\-log\-stderr
+Write logs into stderr, in addition to syslog
+.TP
+.BI \-s\  PATH \fR,\ \fB\-\-socket\-path= PATH
+The bwchat-server's Unix domain socket path
+.TP
+.BI \-u\  URL \fR,\ \fB\-\-upload\-dir\-url= URL
+The file upload directory's URL to use in hyperlinks
+
+.SH SEE ALSO
+.BR bwchat\-server (1),
+.BR spawn\-fcgi (1)
