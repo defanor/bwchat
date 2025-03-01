@@ -78,6 +78,9 @@ char *html_escape (char *dst, const char *src, size_t sz) {
       dst[j] = src[i];
     }
   }
+  if (j > sz - 1) {
+    j = sz - 1;
+  }
   dst[j] = '\0';
   return dst;
 }
